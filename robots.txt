@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://spurghipiacenza24.it/sitemap.xml

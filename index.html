@@ -7,6 +7,7 @@
     <meta name="description" content="Spurghi Piacenza 24 offre autospurgo, disotturazione dei tubi, pulizia fosse biologiche e pronto intervento per fognature a Piacenza e provincia, sempre H24.">
     <link rel="canonical" href="https://spurghipiacenza24.it/">
     <script src="https://cdn.tailwindcss.com"></script>
+    <script src="assets/vendor/lottie.min.js" defer></script>
     <script>
       tailwind.config = {
         theme: {
@@ -31,6 +32,21 @@
       html { scroll-behavior: smooth; }
       .fade-up { animation: fadeUp .75s ease both; }
       .float-soft { animation: floatSoft 6s ease-in-out infinite; }
+      .shine { position: relative; overflow: hidden; }
+      .shine::after {
+        content: "";
+        position: absolute;
+        inset: -60% auto auto -80%;
+        width: 50%;
+        height: 220%;
+        transform: rotate(24deg);
+        background: linear-gradient(90deg, transparent, rgba(255,255,255,.35), transparent);
+        animation: shine 5.5s ease-in-out infinite;
+      }
+      .reveal { opacity: 0; transform: translateY(22px); transition: opacity .75s ease, transform .75s ease; }
+      .reveal.is-visible { opacity: 1; transform: translateY(0); }
+      .image-zoom { transition: transform 1.1s cubic-bezier(.2,.8,.2,1); }
+      .image-zoom:hover { transform: scale(1.035); }
       @keyframes fadeUp {
         from { opacity: 0; transform: translateY(16px); }
         to { opacity: 1; transform: translateY(0); }
@@ -38,6 +54,10 @@
       @keyframes floatSoft {
         0%, 100% { transform: translateY(0); }
         50% { transform: translateY(-12px); }
+      }
+      @keyframes shine {
+        0%, 45% { left: -80%; }
+        75%, 100% { left: 140%; }
       }
     </style>
     <script type="application/ld+json">
@@ -93,6 +113,8 @@
 
     <main>
       <section class="relative overflow-hidden bg-gradient-to-br from-navy via-ocean to-cyanpro text-white">
+        <img src="assets/images/hero-autospurgo-premium.jpg" alt="Autospurgo professionale per interventi urgenti" class="absolute inset-0 h-full w-full object-cover opacity-[.34]">
+        <div class="absolute inset-0 bg-gradient-to-r from-navy via-ocean/90 to-navy/35"></div>
         <div class="absolute inset-0 opacity-20" style="background-image: radial-gradient(circle at 20% 20%, white 0 1px, transparent 1px); background-size: 34px 34px;"></div>
         <div class="relative mx-auto grid max-w-7xl gap-10 px-4 py-16 sm:px-6 lg:grid-cols-[1.08fr_0.92fr] lg:items-center lg:py-24">
           <div class="fade-up">
@@ -107,7 +129,7 @@
               Se stai cercando un servizio di <strong>spurghi a Piacenza</strong>, un autospurgo rapido o una disotturazione dei tubi fatta con criterio, qui trovi un contatto diretto, un linguaggio chiaro e interventi pensati per risolvere il problema senza confusione.
             </p>
             <div class="mt-8 flex flex-col gap-3 sm:flex-row">
-              <a href="tel:+3905231920097" class="inline-flex items-center justify-center rounded-md bg-white px-7 py-4 text-base font-black text-navy shadow-premium transition hover:-translate-y-1">Chiama 0523 192 0097</a>
+              <a href="tel:+3905231920097" class="shine inline-flex items-center justify-center rounded-md bg-white px-7 py-4 text-base font-black text-navy shadow-premium transition hover:-translate-y-1">Chiama 0523 192 0097</a>
               <a href="contact.html" class="inline-flex items-center justify-center rounded-md border border-white/40 px-7 py-4 text-base font-black text-white transition hover:bg-white/10">Richiedi intervento</a>
             </div>
             <div class="mt-8 grid gap-3 text-sm font-bold text-sky-50 sm:grid-cols-3">
@@ -119,7 +141,9 @@
 
           <div class="float-soft">
             <div class="rounded-2xl border border-white/25 bg-white/15 p-5 shadow-premium backdrop-blur">
-              <div class="rounded-xl bg-white p-6 text-slate-800">
+              <div class="overflow-hidden rounded-xl bg-white text-slate-800">
+                <img src="assets/images/team-spurghi-premium.jpg" alt="Tecnici specializzati per spurghi e fognature" class="h-56 w-full object-cover">
+                <div class="p-6">
                 <p class="text-sm font-black uppercase tracking-[0.18em] text-ocean">Pronto intervento</p>
                 <p class="mt-4 text-5xl font-black text-navy">H24</p>
                 <p class="mt-3 leading-7">Una fognatura bloccata non aspetta l'orario d'ufficio. Valutiamo la situazione, raccogliamo le informazioni utili e organizziamo il mezzo piu' adatto.</p>
@@ -128,13 +152,14 @@
                   <div class="rounded-lg bg-ice p-4 font-bold text-navy">Sonde per tubazioni ostruite</div>
                   <div class="rounded-lg bg-ice p-4 font-bold text-navy">Videoispezioni su richiesta</div>
                 </div>
+                </div>
               </div>
             </div>
           </div>
         </div>
       </section>
 
-      <section class="mx-auto max-w-7xl px-4 py-16 sm:px-6 lg:py-20">
+      <section class="reveal mx-auto max-w-7xl px-4 py-16 sm:px-6 lg:py-20">
         <div class="grid gap-10 lg:grid-cols-[0.85fr_1.15fr] lg:items-start">
           <div>
             <p class="text-sm font-black uppercase tracking-[0.18em] text-cyanpro">Servizio locale</p>
@@ -151,7 +176,7 @@
         </div>
       </section>
 
-      <section id="servizi" class="bg-slate-50 px-4 py-16 sm:px-6 lg:py-20">
+      <section id="servizi" class="reveal bg-slate-50 px-4 py-16 sm:px-6 lg:py-20">
         <div class="mx-auto max-w-7xl">
           <div class="mb-10 max-w-3xl">
             <p class="text-sm font-black uppercase tracking-[0.18em] text-cyanpro">Servizi</p>
@@ -193,10 +218,22 @@
         </div>
       </section>
 
-      <section id="metodo" class="mx-auto max-w-7xl px-4 py-16 sm:px-6 lg:py-20">
-        <div class="mb-10 max-w-3xl">
-          <p class="text-sm font-black uppercase tracking-[0.18em] text-cyanpro">Metodo</p>
-          <h2 class="mt-3 text-3xl font-black tracking-tight text-navy sm:text-4xl">Un intervento serio si riconosce dai dettagli.</h2>
+      <section id="metodo" class="reveal mx-auto max-w-7xl px-4 py-16 sm:px-6 lg:py-20">
+        <div class="mb-10 grid gap-8 lg:grid-cols-[0.95fr_0.45fr] lg:items-center">
+          <div class="max-w-3xl">
+            <p class="text-sm font-black uppercase tracking-[0.18em] text-cyanpro">Metodo</p>
+            <h2 class="mt-3 text-3xl font-black tracking-tight text-navy sm:text-4xl">Un intervento serio si riconosce dai dettagli.</h2>
+          </div>
+          <div class="rounded-2xl border border-sky-100 bg-gradient-to-br from-white to-ice p-4 shadow-clean">
+            <div id="drainLottie" class="mx-auto flex h-52 w-52 items-center justify-center" aria-label="Animazione flusso tubazioni">
+              <svg viewBox="0 0 220 220" class="h-44 w-44" aria-hidden="true">
+                <circle cx="110" cy="110" r="78" fill="none" stroke="#075985" stroke-width="8" opacity=".22"/>
+                <circle cx="110" cy="110" r="58" fill="none" stroke="#06b6d4" stroke-width="8" opacity=".35"/>
+                <path d="M42 115c38-42 71 42 136 0" fill="none" stroke="#0284c7" stroke-width="12" stroke-linecap="round"/>
+                <circle cx="110" cy="110" r="16" fill="#06b6d4"/>
+              </svg>
+            </div>
+          </div>
         </div>
         <div class="grid gap-8 lg:grid-cols-3">
           <div class="rounded-2xl bg-gradient-to-br from-ice to-white p-6 shadow-clean">
@@ -217,11 +254,14 @@
         </div>
       </section>
 
-      <section class="bg-mist px-4 py-16 sm:px-6 lg:py-20">
+      <section class="reveal bg-mist px-4 py-16 sm:px-6 lg:py-20">
         <div class="mx-auto grid max-w-7xl gap-10 lg:grid-cols-[0.95fr_1.05fr] lg:items-center">
           <div>
             <p class="text-sm font-black uppercase tracking-[0.18em] text-cyanpro">Perche' chiamarci</p>
             <h2 class="mt-3 text-3xl font-black tracking-tight text-navy sm:text-4xl">Il valore non e' solo arrivare in fretta.</h2>
+            <div class="mt-8 overflow-hidden rounded-2xl shadow-premium">
+              <img src="assets/images/ispezione-tubi-premium.jpg" alt="Ispezione professionale di tubazioni e pozzetti" loading="lazy" class="image-zoom h-80 w-full object-cover">
+            </div>
           </div>
           <div class="space-y-4 leading-8 text-slate-700">
             <p>
@@ -237,7 +277,7 @@
         </div>
       </section>
 
-      <section id="zone" class="bg-gradient-to-br from-navy to-ocean px-4 py-16 text-white sm:px-6 lg:py-20">
+      <section id="zone" class="reveal bg-gradient-to-br from-navy to-ocean px-4 py-16 text-white sm:px-6 lg:py-20">
         <div class="mx-auto max-w-7xl">
           <div class="grid gap-10 lg:grid-cols-[0.85fr_1.15fr]">
             <div>
@@ -263,7 +303,7 @@
         </div>
       </section>
 
-      <section class="mx-auto max-w-7xl px-4 py-16 sm:px-6 lg:py-20">
+      <section class="reveal mx-auto max-w-7xl px-4 py-16 sm:px-6 lg:py-20">
         <div class="grid gap-8 lg:grid-cols-2">
           <div class="rounded-2xl border border-sky-100 bg-white p-6 shadow-clean">
             <h2 class="text-2xl font-black text-navy">Per abitazioni e condomini</h2>
@@ -276,7 +316,7 @@
         </div>
       </section>
 
-      <section class="bg-white px-4 pb-16 sm:px-6 lg:pb-20">
+      <section class="reveal bg-white px-4 pb-16 sm:px-6 lg:pb-20">
         <div class="mx-auto max-w-7xl">
           <div class="mb-10 max-w-3xl">
             <p class="text-sm font-black uppercase tracking-[0.18em] text-cyanpro">Segnali utili</p>
@@ -304,7 +344,7 @@
         </div>
       </section>
 
-      <section class="bg-slate-50 px-4 py-16 sm:px-6 lg:py-20">
+      <section class="reveal bg-slate-50 px-4 py-16 sm:px-6 lg:py-20">
         <div class="mx-auto grid max-w-7xl gap-10 lg:grid-cols-[0.9fr_1.1fr] lg:items-start">
           <div>
             <p class="text-sm font-black uppercase tracking-[0.18em] text-cyanpro">Prevenzione</p>
@@ -327,7 +367,7 @@
         </div>
       </section>
 
-      <section id="faq" class="bg-slate-50 px-4 py-16 sm:px-6 lg:py-20">
+      <section id="faq" class="reveal bg-slate-50 px-4 py-16 sm:px-6 lg:py-20">
         <div class="mx-auto max-w-5xl">
           <div class="mb-10 text-center">
             <p class="text-sm font-black uppercase tracking-[0.18em] text-cyanpro">FAQ</p>
@@ -354,7 +394,7 @@
         </div>
       </section>
 
-      <section class="px-4 py-16 sm:px-6">
+      <section class="reveal px-4 py-16 sm:px-6">
         <div class="mx-auto max-w-7xl rounded-2xl bg-gradient-to-br from-ocean to-cyanpro p-8 text-white shadow-premium sm:p-10 lg:flex lg:items-center lg:justify-between">
           <div class="max-w-3xl">
             <h2 class="text-3xl font-black tracking-tight sm:text-4xl">Serve un intervento a Piacenza?</h2>
@@ -375,5 +415,29 @@
         <p>Via Luigi Rigolli, 37 - 29122 Piacenza PC</p>
       </div>
     </footer>
+    <script>
+      window.addEventListener("DOMContentLoaded", function () {
+        var reveals = document.querySelectorAll(".reveal");
+        var observer = new IntersectionObserver(function (entries) {
+          entries.forEach(function (entry) {
+            if (entry.isIntersecting) {
+              entry.target.classList.add("is-visible");
+              observer.unobserve(entry.target);
+            }
+          });
+        }, { threshold: 0.14 });
+        reveals.forEach(function (item) { observer.observe(item); });
+
+        if (window.lottie) {
+          window.lottie.loadAnimation({
+            container: document.getElementById("drainLottie"),
+            renderer: "svg",
+            loop: true,
+            autoplay: true,
+            path: "assets/lottie/drain-flow.json"
+          });
+        }
+      });
+    </script>
   </body>
 </html>

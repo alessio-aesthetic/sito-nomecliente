@@ -26,6 +26,25 @@
         }
       };
     </script>
+    <style>
+      .reveal { opacity: 0; transform: translateY(20px); transition: opacity .75s ease, transform .75s ease; }
+      .reveal.is-visible { opacity: 1; transform: translateY(0); }
+      .shine { position: relative; overflow: hidden; }
+      .shine::after {
+        content: "";
+        position: absolute;
+        inset: -60% auto auto -80%;
+        width: 50%;
+        height: 220%;
+        transform: rotate(24deg);
+        background: linear-gradient(90deg, transparent, rgba(255,255,255,.35), transparent);
+        animation: shine 5.5s ease-in-out infinite;
+      }
+      @keyframes shine {
+        0%, 45% { left: -80%; }
+        75%, 100% { left: 140%; }
+      }
+    </style>
     <script type="application/ld+json">
       {
         "@context": "https://schema.org",
@@ -72,15 +91,17 @@
     </header>
 
     <main>
-      <section class="bg-gradient-to-br from-navy via-ocean to-cyanpro px-4 py-14 text-white sm:px-6 lg:py-20">
-        <div class="mx-auto max-w-7xl">
+      <section class="relative overflow-hidden bg-gradient-to-br from-navy via-ocean to-cyanpro px-4 py-14 text-white sm:px-6 lg:py-20">
+        <img src="assets/images/team-spurghi-premium.jpg" alt="Squadra tecnica per spurghi e fognature" class="absolute inset-0 h-full w-full object-cover opacity-[.24]">
+        <div class="absolute inset-0 bg-gradient-to-r from-navy via-ocean/90 to-navy/45"></div>
+        <div class="relative mx-auto max-w-7xl">
           <p class="mb-4 inline-flex rounded-full border border-white/30 bg-white/15 px-4 py-2 text-sm font-black">Centralino operativo H24</p>
           <h1 class="max-w-4xl text-4xl font-black tracking-tight sm:text-6xl">Contatti per spurghi e fognature a Piacenza</h1>
           <p class="mt-5 max-w-3xl text-lg leading-8 text-sky-50">Per urgenze chiama subito. Per preventivi, manutenzioni programmate o richieste non immediate puoi usare il form.</p>
         </div>
       </section>
 
-      <section class="mx-auto grid max-w-7xl gap-8 px-4 py-14 sm:px-6 lg:grid-cols-[0.9fr_1.1fr] lg:py-20">
+      <section class="reveal mx-auto grid max-w-7xl gap-8 px-4 py-14 sm:px-6 lg:grid-cols-[0.9fr_1.1fr] lg:py-20">
         <aside class="space-y-5">
           <div class="rounded-xl border border-sky-100 bg-ice p-6 shadow-clean">
             <h2 class="text-2xl font-black text-navy">Dati aziendali</h2>
@@ -95,7 +116,7 @@
           <div class="rounded-xl border border-sky-100 bg-white p-6 shadow-clean">
             <h2 class="text-2xl font-black text-navy">Urgenza in corso?</h2>
             <p class="mt-3 leading-7 text-slate-600">Se l'acqua risale, il pozzetto e' pieno o la fognatura crea odori forti, la chiamata e' il canale piu' veloce.</p>
-            <a href="tel:+3905231920097" class="mt-5 inline-flex w-full items-center justify-center rounded-md bg-ocean px-6 py-4 font-black text-white shadow-premium">Chiama 0523 192 0097</a>
+            <a href="tel:+3905231920097" class="shine mt-5 inline-flex w-full items-center justify-center rounded-md bg-ocean px-6 py-4 font-black text-white shadow-premium">Chiama 0523 192 0097</a>
           </div>
           <iframe class="h-72 w-full rounded-xl border border-sky-100 shadow-clean" loading="lazy" referrerpolicy="no-referrer-when-downgrade" src="https://www.google.com/maps?q=Via%20Luigi%20Rigolli%2037%2C%20Piacenza%2C%20Italia&output=embed" title="Mappa Via Luigi Rigolli 37 Piacenza"></iframe>
         </aside>
@@ -147,5 +168,19 @@
         <p>Via Luigi Rigolli, 37 - 29122 Piacenza PC</p>
       </div>
     </footer>
+    <script>
+      window.addEventListener("DOMContentLoaded", function () {
+        var reveals = document.querySelectorAll(".reveal");
+        var observer = new IntersectionObserver(function (entries) {
+          entries.forEach(function (entry) {
+            if (entry.isIntersecting) {
+              entry.target.classList.add("is-visible");
+              observer.unobserve(entry.target);
+            }
+          });
+        }, { threshold: 0.14 });
+        reveals.forEach(function (item) { observer.observe(item); });
+      });
+    </script>
   </body>
 </html>
